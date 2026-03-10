@@ -28,7 +28,7 @@ export default function WhoItsFor() {
             If you're in London or Sheffield,<br className="hidden sm:block" /> Zynzi is for you
           </h2>
           <p className="font-roboto font-light text-brand-body text-lg leading-relaxed max-w-md mx-auto">
-            Professionals, students, newcomers, social explorers — all welcome.
+            Professionals, students, newcomers, social explorers - all welcome.
           </p>
         </div>
 

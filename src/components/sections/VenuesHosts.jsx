@@ -41,7 +41,7 @@ export default function VenuesHosts() {
               Turn your space into<br /> a social hub
             </h2>
             <p className="font-roboto font-light text-brand-body text-base leading-relaxed mb-8">
-              Cafés, coworking spaces, universities, and lounges can become Verified Zynzi Hosts — driving footfall, community, and brand visibility.
+              Cafés, coworking spaces, universities, and lounges can become Verified Zynzi Hosts - driving footfall, community, and brand visibility.
             </p>
 
             {/* Perks */}

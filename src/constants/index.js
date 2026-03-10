@@ -91,7 +91,7 @@ export const FEATURES = [
   {
     icon: 'trending-up',
     title: 'Reputation That Grows',
-    desc:  'Your Zynzi trust score is built event by event. The more you show up and treat people well, the more you unlock — including private hosting rights.',
+    desc:  'Your Zynzi trust score is built event by event. The more you show up and treat people well, the more you unlock - including private hosting rights.',
     color: 'from-brand-sky to-brand-sky-light',
   },
   {

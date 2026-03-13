@@ -5,32 +5,32 @@ const faqs = [
   {
     question: "What is Zynzi and how does it work?",
     answer:
-      "Zynzi is a caregiving management app designed to simplify daily tasks, track schedules, and connect with the community effortlessly. You can manage everything from one clean dashboard in real-time.",
+      "Zynzi is a spontaneous social meetup app that connects real people for casual, small-group experiences like dinners, walks, games, coffee, anything. You post a vibe, browse what's happening nearby, and join or host a meetup in minutes. No endless swiping, no awkward DMs. Just real moments with real people, right now.",
   },
   {
     question: "Is my data safe with Zynzi?",
     answer:
-      "Absolutely. We use end-to-end encryption, secure cloud storage, and strict privacy protocols. Your personal and caregiving data is 100% protected and never shared without consent.",
+      "Yes. Your privacy is built into everything we do. We collect only what's needed to make Zynzi work, we never sell your personal data to third parties, and all data is encrypted and stored securely. You're always in control of your profile and what you share.",
   },
   {
     question: "Can I use Zynzi on multiple devices?",
     answer:
-      "Yes! Zynzi syncs seamlessly across smartphones, tablets, and desktops. Log in from anywhere and all your updates stay perfectly synchronized.",
+      "Yes, your Zynzi account works across iOS and Android. Sign in on any device and your profile, meetups, and connections stay synced automatically.",
   },
   {
     question: "Do I need any special skills to use Zynzi?",
     answer:
-      "Not at all. Zynzi is built for simplicity. The interface is intuitive, with smart onboarding and helpful tips to get you started in minutes.",
+      "None at all. If you can send a message, you can use Zynzi. The app is designed to be simple and intuitive, post a vibe in seconds, browse what's nearby, and show up. That's it.",
   },
   {
     question: "How can I join the waitlist?",
     answer:
-      "Simply enter your email in the waitlist form on the homepage. You’ll receive early access and exclusive updates as soon as the app is ready.",
+      "Just enter your email address in the form on this page. You'll get a confirmation email and we'll notify you the moment Zynzi launches in your city. Early waitlist members get priority access.",
   },
   {
     question: "What kind of support does Zynzi offer?",
     answer:
-      "We provide 24/7 customer support via chat and email. Our team is always ready to assist you, from troubleshooting to tips for maximizing your experience.",
+      "We're a small, founder-led team and we actually respond. You can reach us at hello@zynzi.app for any questions, feedback, or ideas. We read everything",
   },
 ];
 

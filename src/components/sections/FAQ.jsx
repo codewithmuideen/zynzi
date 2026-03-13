@@ -30,7 +30,7 @@ const faqs = [
   {
     question: "What kind of support does Zynzi offer?",
     answer:
-      "We're a small, founder-led team and we actually respond. You can reach us at <a href='mailto:hello@zynzi.app'>hello@zynzi.app</a> for any questions, feedback, or ideas. We read everything",
+      "We're a small, founder-led team and we actually respond. You can reach us at hello@zynzi.app for any questions, feedback, or ideas. We read everything",
   },
 ];
 

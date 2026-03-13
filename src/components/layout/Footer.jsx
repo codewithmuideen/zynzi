@@ -27,14 +27,14 @@ export default function Footer() {
           {/* Brand column */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-12 h-12 rounded-xl bg-gradient-brand flex items-center justify-center">
-                <img src={IMAGES.logo} alt="Zynzi" className="w-9 h-9 object-contain" />
+              <div className="w-16 h-16 flex items-center justify-center">
+                <img src={IMAGES.whitelogo} alt="Zynzi" className="w-16 h-16 object-contain" />
               </div>
-              <span className="font-roboto font-black text-white text-xl tracking-[0.12em]">
+              {/* <span className="font-roboto font-black text-white text-xl tracking-[0.12em]">
                 <span className="text-brand-sky font-light">—</span>
                 ZYNZI
                 <span className="text-brand-sky font-light">—</span>
-              </span>
+              </span> */}
             </div>
             <p className="font-roboto text-sm font-light text-white/55 leading-relaxed max-w-xs mb-6">
               A spontaneous social platform connecting real people for real moments - dinners, walks, games, coffee. Launching in London and Sheffield.

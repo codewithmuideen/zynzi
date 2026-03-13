@@ -1,11 +1,22 @@
 // ─── Image Assets ────────────────────────────────────────────────────────────
 import logo       from '../assets/logo.png'
+import whitelogo       from '../assets/white_logo.png'
 import mobileApp  from '../assets/mobile_app.png'
+import App0 from '../assets/app0.png'
+import App1  from '../assets/app1.png'
 import africanBoy from '../assets/african-boy.png'
 // import colorImg   from '../assets/color.png'
 
-export const IMAGES = { logo, mobileApp, africanBoy }
+export const IMAGES = { logo, mobileApp, africanBoy, whitelogo, App0, App1 }
 
+export const WAITLIST_TITLE = "Why Join Waitlist"
+
+export const WAITLIST_FEATURES = [
+  "Get early access to the app before anyone else",
+  "Be among the first members in your city",
+  "Help shape the community and product direction",
+  "Receive exclusive launch updates and news"
+]
 // ─── Navigation ──────────────────────────────────────────────────────────────
 export const NAV_CTA_LABEL = 'Join Waitlist'
 

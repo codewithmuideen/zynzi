@@ -35,7 +35,7 @@ export default function FinalCTA() {
             theme="dark"
             showTypeSelect={false}
             id="final"
-            ctaLabel="Claim Your Spot"
+            ctaLabel="Join Waitlist"
           />
         </div>
 

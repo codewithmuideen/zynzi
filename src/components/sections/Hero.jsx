@@ -23,7 +23,7 @@ export default function Hero() {
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-        {/* ═══ LEFT CONTENT ══════════════════════════════════════ */}
+        {/* LEFT CONTENT */}
         <div className="flex flex-col space-y-8">
 
           {/* Badge */}
@@ -35,14 +35,14 @@ export default function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-white font-bold leading-[1.1] tracking-tight text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="text-white font-bold leading-[1.1] tracking-tight text-4xl md:text-6xl lg:text-7xl">
             {HERO_TITLE_1} <br />
             {HERO_TITLE_2} <br />
             <span className="text-blue-500">{HERO_TITLE_HL}</span>
           </h1>
 
           {/* Subtext */}
-          <p className="text-white/60 text-lg md:text-xl max-w-lg leading-relaxed font-light">
+          <p className="text-white/60 text-base md:text-xl max-w-lg leading-relaxed font-light">
             {HERO_SUB}
           </p>
 
@@ -52,40 +52,44 @@ export default function Hero() {
               <WaitlistForm
                 theme="dark"
                 id="hero"
-                ctaLabel="Start Chatting Now"
+                ctaLabel="Join Waitlist"
                 icon={<ArrowRight size={18} />}
               />
             </div>
           </div>
 
           {/* Social Proof */}
-          <div className="flex flex-wrap items-center gap-10 pt-4">
+          <div className="flex flex-nowrap items-center justify-between sm:justify-start gap-6 pt-2">
 
-            <div className="flex items-center gap-4">
+            {/* Avatars + Waitlist */}
+            <div className="flex items-center gap-3">
               <div className="flex -space-x-3">
                 {socialProofImages.map((src, i) => (
                   <img
                     key={i}
                     src={src}
-                    className="w-12 h-12 rounded-full border-4 border-[#0B0F17] object-cover"
+                    className="w-7 h-7 rounded-full border-4 border-[#0B0F17] object-cover"
                     alt="User"
                   />
                 ))}
               </div>
 
-              <div>
-                <p className="text-white font-bold text-xl">500+</p>
-                <p className="text-white/40 text-sm leading-snug">
-                  People on <br /> the waitlist
+              <div className="leading-tight">
+                <p className="text-white font-semibold text-sm">500+</p>
+                <p className="text-white/40 text-xs">
+                  People on the waitlist
                 </p>
               </div>
             </div>
 
-            <div className="hidden sm:block w-px h-10 bg-white/10" />
+            {/* Divider */}
+            <div className="w-px h-8 bg-white/10 hidden sm:block" />
 
-            <div>
-              <p className="text-white font-bold text-xl">4.8/5</p>
-              <div className="flex gap-1 items-center">
+            {/* Rating */}
+            <div className="flex items-center gap-2">
+              <p className="text-white font-semibold text-sm">4.8/5</p>
+
+              <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
@@ -93,26 +97,25 @@ export default function Hero() {
                     className="fill-yellow-500 text-yellow-500"
                   />
                 ))}
-                <span className="text-white/40 text-sm ml-2">Rating</span>
               </div>
+
+              <span className="text-white/40 text-xs">Rating</span>
             </div>
 
           </div>
         </div>
 
-        {/* ═══ RIGHT IMAGE (CLEAN) ══════════════════════════════════════ */}
-        <div className="flex items-center justify-center">
-
+        {/* RIGHT IMAGE (hidden on mobile) */}
+        <div className="hidden lg:flex items-center justify-center">
           <img
             src={IMAGES.App1}
             alt="Zynzi App Preview"
             className="w-full max-w-md lg:max-w-lg object-contain drop-shadow-2xl"
           />
-
         </div>
       </div>
 
-      {/* Bottom scroll indicator */}
+      {/* Bottom Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30">
         <p className="text-[10px] text-white tracking-[0.2em] uppercase font-bold">
           Explore

@@ -2,20 +2,24 @@
 $messageText = "";
 $success = false;
 
-// Function to get user IP
+// DB connection
+$host = "localhost";      // your DB host
+$db   = "your_db_name";   // your DB name
+$user = "your_db_user";   // your DB user
+$pass = "your_db_pass";   // your DB password
+
+$conn = new mysqli($host, $user, $pass, $db);
+if ($conn->connect_error) die("DB Connection failed: " . $conn->connect_error);
+
+// Functions for IP & Location
 function getUserIP() {
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    } else {
-        $ip = $_SERVER['REMOTE_ADDR'] ?? 'UNKNOWN';
-    }
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) $ip = $_SERVER['HTTP_CLIENT_IP'];
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else $ip = $_SERVER['REMOTE_ADDR'] ?? 'UNKNOWN';
     $ip_list = explode(',', $ip);
     return trim($ip_list[0]);
 }
 
-// Function to get location from IP
 function getUserLocation($ip) {
     $url = "http://ip-api.com/json/{$ip}?fields=status,country,regionName,city";
     $response = @file_get_contents($url);
@@ -31,88 +35,27 @@ function getUserLocation($ip) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = filter_var(trim($_POST['email'] ?? ""), FILTER_SANITIZE_EMAIL);
     $userType = strip_tags(trim($_POST['type'] ?? $_POST['waitlist-type'] ?? "Not specified"));
-
     $user_ip = getUserIP();
     $user_location = getUserLocation($user_ip);
 
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $messageText = "Invalid email address. Redirecting back...";
     } else {
-        $to = "hello@zynzi.app";
-        $subject = "New Waitlist Signup";
-        $email_content = "Email: $email\n";
-        $email_content .= "User Type: $userType\n";
-        $email_content .= "IP Address: $user_ip\n";
-        $email_content .= "Location: $user_location\n";
-        $headers = "From: $email\r\nReply-To: $email\r\n";
-
-        if (mail($to, $subject, $email_content, $headers)) {
-            $messageText = "You're on the waitlist! We'll be in touch soon. Redirecting to home page...";
+        // Save to database
+        $stmt = $conn->prepare("INSERT INTO waitlist_submissions (email, user_type, ip_address, location) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $email, $userType, $user_ip, $user_location);
+        if ($stmt->execute()) {
+            $messageText = "You're on the waitlist! We'll be in touch soon. Redirecting...";
             $success = true;
         } else {
             $messageText = "Oops! Something went wrong. Redirecting back...";
         }
+        $stmt->close();
     }
 } else {
     $messageText = "Invalid request method. Redirecting...";
 }
 
-// Redirect after 3 seconds
+$conn->close();
 header("Refresh:3; url=/");
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Waitlist Submission</title>
-<style>
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #1F4494 0%, #3DA0E4 100%);
-    font-family: 'Roboto', sans-serif;
-}
-.modal {
-    background: rgba(255,255,255,0.95);
-    border-radius: 16px;
-    padding: 30px 25px;
-    max-width: 450px;
-    width: 90%;
-    text-align: center;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.3);
-    animation: fadeIn 0.5s ease-in-out;
-}
-.modal::before {
-    content: '<?php echo $success ? "✔" : "✖"; ?>';
-    display: block;
-    font-size: 50px;
-    color: <?php echo $success ? "#00C851" : "#ff4444"; ?>;
-    margin-bottom: 15px;
-}
-.modal p {
-    font-size: 18px;
-    color: #0F1C3A;
-    margin: 0;
-    line-height: 1.5;
-}
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(-20px);}
-    to {opacity:1; transform: translateY(0);}
-}
-@media (max-width: 500px) {
-    .modal { padding: 25px 20px; }
-    .modal p { font-size: 16px; }
-}
-</style>
-</head>
-<body>
-<div class="modal">
-    <p><?php echo htmlspecialchars($messageText); ?></p>
-</div>
-</body>
-</html>
